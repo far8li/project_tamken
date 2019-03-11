@@ -15,22 +15,25 @@
         };
         firebase.initializeApp(config);
         </script>
-        <style>
+          <style>
             body
             {
                 direction: rtl ;
-                background-color: #9e9e9e8a;
+                background-image: url(https://firebasestorage.googleapis.com/v0/b/friends-1a5e7.appspot.com/o/%D9%85%D9%86_%D8%A3%D9%88%D9%84_%D9%85%D9%86_%D8%B1%D8%B3%D9%85_%D8%AE%D8%B1%D9%8A%D8%B7%D8%A9_%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85.jpg?alt=media&token=96df5cf2-065b-4ae3-8cc7-0e183dd0922f);
                 width: 100%;
                 height: 100%;
                 background-size: cover;
                 background-attachment: fixed;
                 padding: 0px;
                 margin: 0px;
+                background-repeat: no-repeat;
+               
+
             }
             #navbar
              {
                 height: 50px;
-                background-color: #102432;
+                background-color: #480c11;;
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -63,22 +66,23 @@
             }
             .char-container
             {
-                background-color: #8ebbb8d9;
+                background-color:#693030d4;
                 padding: 10px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 border-radius: 10%;
                 width: 85%;
-                height: 65%;
                 margin-right: 20px;
                 margin-bottom: 20px;
+               
             }
             .char-img
             {
                 width: 250;
                 height: 250;
                 border-radius: 50%;
+                border: 2px solid #e2d5c2;
             }
             .info-container
             {
@@ -91,25 +95,22 @@
                 font-size: -webkit-xxx-large;
                 font-weight: bold;
                 padding-top: 15px;   
-                color: black;   
-                font-family:'Lateef',cursive;  
+                color: black;        
             }
             .data
             {
                 font-size: large;
                 margin-top: 10px;  
                 color: black; 
-                font-family:'Lateef',cursive;
             }
             .textd
             {
                 text-decoration: none;
             }
-            #title
-            {
-                color: aliceblue;
+            #title{
+                color: burlywood;
             }
-        </style>    
+        </style>   
     </head>
         <body> 
             <div>
@@ -142,7 +143,7 @@
                     var id = objects.docs[i].id;
                     var data = objects.docs[i].data();
                     var template=   '<div class="char-container">' +
-                                    '<a class="textd" href="'+data.Link+'">' +
+                                    '<a class="textd" href="single.html?'+id+'">' +
                                     '<div><img class="char-img" src="'+ data.Img +'"></img></div>' +
                                     '<div class="info-container">' +
                                         '<div Class="name">' + data.Name + '</div>'+
