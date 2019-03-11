@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAyDX9X1T8eK-UWI-QvZf4q0SToNwojuA0",
+            authDomain: "project-aee2b.firebaseapp.com",
+            databaseURL: "https://project-aee2b.firebaseio.com",
+            projectId: "project-aee2b",
+            storageBucket: "project-aee2b.appspot.com",
+            messagingSenderId: "679162926242"
+        };
+        firebase.initializeApp(config);
+        </script>
+        <style>
+            body
+            {
+                direction: rtl ;
+                background-color: #9e9e9e8a;
+            }
+            #top
+            {
+                width: -webkit-fill-available;
+                height: 60%;
+                margin-bottom: 10px;
+            }
+            #container
+            {
+                padding-left: 20px;
+                display: flex;
+                margin-top: 20px;
+            }
+            .char-container
+            {
+                background-color: #8ebbb8d9;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-radius: 10%;
+                width: 30%;
+                height: 65%;
+                margin-right: 20px;
+            }
+            .char-img
+            {
+                width: 250;
+                height: 250;
+                border-radius: 50%;
+            }
+            .info-container
+            {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .name
+            {
+                font-size: -webkit-xxx-large;
+                font-weight: bold;
+                padding-top: 15px;   
+                color: black;        
+            }
+            .data
+            {
+                font-size: large;
+                margin-top: 10px;  
+                color: black; 
+            }
+            .textd
+            {
+                text-decoration: none;
+            }
+        </style>    
+    </head>
+        <body> 
+            <div>
+                <div id="container">
+                </div>
+            </div>  
+        </body>
+        <script>
+            var db = firebase.firestore();
+            db.collection("philosopher").onSnapshot(handleDataRead);
+            function handleDataRead(objects) 
+            {
+                var n = objects.size;
+                var i = 0;
+                $('#container').html('');
+                while(i < n) 
+                {
+                    var id = objects.docs[i].id;
+                    var data = objects.docs[i].data();
+                    if(id=='XWTv00LgFFuK9hMRs09K')
+                    {
+                    var template=   '<div class="char-container">' +
+                                    '<div><img class="char-img" src="'+ data.Img +'"></img></div>' +
+                                    '<div class="info-container">' +
+                                        '<div Class="name">' + data.Name + '</div>'+
+                                        '<div class="data"> تاريخ الميلاد : '+data.Data_B+'</div>' +
+                                        '<div class="data"> تاريخ الوفاه : '+data.Data_D+'</div>' +
+                                    '</div>' +
+                                '</div>';
+                    var x=$('#container');
+                    x.append(template);
+                    }
+                    i = i + 1;
+                }
+            }
+        </script>
+</html>
